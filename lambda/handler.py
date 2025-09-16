@@ -36,6 +36,15 @@ def handler(event, context):
             "headers": {"Content-Type": "application/json"},
             "body": json.dumps({"message": "Hello from Lambda!"})
         }
+    
+    
+    elif route == "/contact" and method == "GET":
+        return {
+            "statusCode": 200,
+            "headers": {"Content-Type": "application/json"},
+            "body": json.dumps({{"email": "test@example.com", "name": "John", "message": "Hello"},
+                                {"email": "test@example.com", "name": "John2", "message": "Hello2"}})
+        }
 
     elif route == "/contact" and method == "POST":
         body = json.loads(event.get("body", "{}"))
